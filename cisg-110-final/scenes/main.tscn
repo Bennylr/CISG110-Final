@@ -47,6 +47,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tefeu"]
+radius = 28.635643
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tefeu"]
 texture = ExtResource("2_jyhfs")
 texture_region_size = Vector2i(32, 32)
@@ -3212,10 +3215,12 @@ region = Rect2(59, 28, 17, 17)
 
 [node name="Main" type="Node2D" unique_id=1956754398]
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=268211501]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=268211501 node_paths=PackedStringArray("_kickRight", "_kickLeft")]
 z_index = 100
 collision_mask = 6
 script = ExtResource("1_tefeu")
+_kickRight = NodePath("KickRight")
+_kickLeft = NodePath("KickLeft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=426513366]
 shape = SubResource("CapsuleShape2D_0wfyh")
@@ -3227,6 +3232,22 @@ sprite_frames = SubResource("SpriteFrames_o6xl0")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=448579724]
+
+[node name="KickLeft" type="Area2D" parent="Player" unique_id=57628676]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/KickLeft" unique_id=2095780496]
+position = Vector2(-13, 1)
+shape = SubResource("CircleShape2D_tefeu")
+
+[node name="KickRight" type="Area2D" parent="Player" unique_id=1646095008]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/KickRight" unique_id=1226129462]
+position = Vector2(12, 0)
+shape = SubResource("CircleShape2D_tefeu")
 
 [node name="TileMapLayer_Walls" type="TileMapLayer" parent="." unique_id=1779617256]
 tile_map_data = PackedByteArray("AAD4//z/AAAGABkAAAD4//3/AAAGABkAAAD4//7/AAAGABkAAAD4////AAAGABkAAAD4/wAAAAAGABkAAAD5//z/AAAGABkAAAD5//3/AAAGABkAAAD5//7/AAAGABkAAAD5////AAAGABkAAAD5/wAAAAAGABkAAAD6//z/AAAGABkAAAD6//3/AAAGABkAAAD6//7/AAAGABkAAAD6////AAAGABkAAAD6/wAAAAAGABkAAAD7//z/AAAGABkAAAD7//3/AAAGABkAAAD7//7/AAAGABkAAAD7////AAAGABkAAAD7/wAAAAAGABkAAAD8//z/AAAGABkAAAD8//3/AAAGABkAAAD8//7/AAAGABkAAAD8////AAAGABkAAAD8/wAAAAAGABkAAAD9//z/AAAGABkAAAD9//3/AAAGABkAAAD9//7/AAAGABkAAAD9////AAAGABkAAAD9/wAAAAAGABkAAAD+//z/AAAGABkAAAD+//3/AAAGABkAAAD+//7/AAAGABkAAAD+////AAAGABkAAAD+/wAAAAAGABkAAAD///z/AAAGABkAAAD///3/AAAGABkAAAD///7/AAAGABkAAAD/////AAAGABkAAAD//wAAAAAGABkAAAAAAPz/AAAGABkAAAAAAP3/AAAGABkAAAAAAP7/AAAGABkAAAAAAP//AAAGABkAAAAAAAAAAAAGABkAAAABAPz/AAAGABkAAAABAP3/AAAGABkAAAABAP7/AAAGABkAAAABAP//AAAGABkAAAABAAAAAAAGABkAAAACAPz/AAAGABkAAAACAP3/AAAGABkAAAACAP7/AAAGABkAAAACAP//AAAGABkAAAACAAAAAAAGABkAAAADAPz/AAAGABkAAAADAP3/AAAGABkAAAADAP7/AAAGABkAAAADAP//AAAGABkAAAADAAAAAAAGABkAAAAEAPz/AAAGABkAAAAEAP3/AAAGABkAAAAEAP7/AAAGABkAAAAEAP//AAAGABkAAAAEAAAAAAAGABkAAAAFAPz/AAAGABkAAAAFAP3/AAAGABkAAAAFAP7/AAAGABkAAAAFAP//AAAGABkAAAAFAAAAAAAGABkAAAAGAPz/AAAGABkAAAAGAP3/AAAGABkAAAAGAP7/AAAGABkAAAAGAP//AAAGABkAAAAGAAAAAAAGABkAAAAHAPz/AAAGABkAAAAHAP3/AAAGABkAAAAHAP7/AAAGABkAAAAHAP//AAAGABkAAAAHAAAAAAAGABkAAAAIAPz/AAAGABkAAAAIAP3/AAAGABkAAAAIAP7/AAAGABkAAAAIAP//AAAGABkAAAAIAAAAAAAGABkAAAAJAPz/AAAGABkAAAAJAP3/AAAGABkAAAAJAP7/AAAGABkAAAAJAP//AAAGABkAAAAJAAAAAAAGABkAAAD4//v/AAAGABkAAAD5//v/AAAGABkAAAD6//v/AAAGABkAAAD7//v/AAAGABkAAAD8//v/AAAGABkAAAD9//v/AAAGABkAAAD+//v/AAAGABkAAAD///v/AAAGABkAAAAAAPv/AAAGABkAAAABAPv/AAAGABkAAAACAPv/AAAGABkAAAADAPv/AAAGABkAAAAEAPv/AAAGABkAAAAFAPv/AAAGABkAAAAGAPv/AAAGABkAAAAHAPv/AAAGABkAAAAIAPv/AAAGABkAAAAJAPv/AAAGABkAAAA=")
@@ -3246,14 +3267,18 @@ collision_visibility_mode = 1
 
 [node name="Teddy" type="RigidBody2D" parent="." unique_id=287995486]
 z_index = 10
+position = Vector2(143, 1)
 collision_layer = 4
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teddy" unique_id=1566027191]
-position = Vector2(120, 14)
+position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_tipki")
 
 [node name="Sprite2D" type="Sprite2D" parent="Teddy" unique_id=1965441869]
-position = Vector2(120, 14)
+position = Vector2(1, 2)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_85g3d")
+
+[connection signal="body_shape_entered" from="Player/KickLeft" to="Player" method="_on_kick_left_body_shape_entered"]
+[connection signal="body_shape_entered" from="Player/KickRight" to="Player" method="_on_kick_right_body_shape_entered"]
