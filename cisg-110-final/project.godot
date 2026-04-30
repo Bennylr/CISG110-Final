@@ -59,6 +59,7 @@ ui_up={
 2d_physics/layer_2="Platforms"
 2d_physics/layer_3="Props"
 2d_physics/layer_4="Kick"
+2d_physics/layer_5="Rat"
 
 [rendering]
 

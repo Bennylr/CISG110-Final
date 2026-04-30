@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b5dbm0rhjy27r"]
+
+[ext_resource type="Texture2D" uid="uid://bj4vvn80427sh" path="res://sprites/item_tileset.png" id="1_jl7df"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85g3d"]
+radius = 21.023796
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_choun"]
+atlas = ExtResource("1_jl7df")
+region = Rect2(19, 29, 12, 18)
+
+[node name="MedKit" type="RigidBody2D" unique_id=980808595]
+collision_layer = 4
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2110349735]
+position = Vector2(-450, -499)
+shape = SubResource("CircleShape2D_85g3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1927577502]
+position = Vector2(-449, -499)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_choun")
