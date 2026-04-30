@@ -74,12 +74,15 @@ func _disablekick() -> void:
 
 
 func _on_kick_right_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	print("right kick")
 	print(body.name)
 	body.apply_central_impulse(_rightKickDir)
 
+	if body is Prop:
+		body._was_kicked = true
 
 func _on_kick_left_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	print("left kick")
 	print(body.name)
 	body.apply_central_impulse(_leftKickDir)
+	
+	if body is Prop:
+		body._was_kicked = true
