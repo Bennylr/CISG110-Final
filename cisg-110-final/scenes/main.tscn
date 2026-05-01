@@ -3267,14 +3267,16 @@ collision_visibility_mode = 1
 position = Vector2(639, -179)
 
 [node name="Coke Bottle" parent="." unique_id=776289438 instance=ExtResource("7_85g3d")]
+position = Vector2(-257, -45)
 
 [node name="MedKit" parent="." unique_id=980808595 instance=ExtResource("8_choun")]
+position = Vector2(-260, -178)
 
 [node name="Rat" parent="." unique_id=782129096 instance=ExtResource("9_ya4ey")]
 position = Vector2(135, 14)
 
 [node name="Teddy2" parent="." unique_id=1510602145 instance=ExtResource("6_o6xl0")]
-position = Vector2(140, -25)
+position = Vector2(253, -53)
 
 [connection signal="body_shape_entered" from="Player/KickLeft" to="Player" method="_on_kick_left_body_shape_entered"]
 [connection signal="body_shape_entered" from="Player/KickRight" to="Player" method="_on_kick_right_body_shape_entered"]

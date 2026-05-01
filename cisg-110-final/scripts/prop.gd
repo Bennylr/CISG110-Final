@@ -18,3 +18,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, lo
 		_explosion_VFX.reparent(get_parent())
 		
 		queue_free()
+
+
+func _on_med_kit_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
+	pass # Replace with function body.

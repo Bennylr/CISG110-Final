@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://6k8fppn8sxb5"]
 
+[ext_resource type="Script" uid="uid://n6u10kck8o88" path="res://scripts/prop.gd" id="1_npjlw"]
 [ext_resource type="Texture2D" uid="uid://bj4vvn80427sh" path="res://sprites/item_tileset.png" id="1_r0mh6"]
+[ext_resource type="PackedScene" uid="uid://rgwrnmsghqsx" path="res://scenes/explosion_vfx.tscn" id="2_3wr2i"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_npjlw"]
+bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o6xl0"]
 radius = 18.248287
@@ -9,16 +14,22 @@ radius = 18.248287
 atlas = ExtResource("1_r0mh6")
 region = Rect2(43, 2, 6, 18)
 
-[node name="Coke Bottle" type="RigidBody2D" unique_id=776289438]
+[node name="Coke Bottle" type="RigidBody2D" unique_id=776289438 node_paths=PackedStringArray("_explosion_VFX")]
+z_index = 10
 collision_layer = 4
 collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_npjlw")
+script = ExtResource("1_npjlw")
+_explosion_VFX = NodePath("Explosion VFX")
+
+[node name="Explosion VFX" parent="." unique_id=1738028720 instance=ExtResource("2_3wr2i")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1658558119]
-position = Vector2(-448, -115)
 shape = SubResource("CircleShape2D_o6xl0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1994266468]
-position = Vector2(-448, -115)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_tipki")
 region_rect = Rect2(43, 2, 6, 18)
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

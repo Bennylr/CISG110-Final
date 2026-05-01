@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d1jwoi2b354lp" path="res://sprites/Rat-Cinnamon-Walk.png" id="1_1l88y"]
 [ext_resource type="Script" uid="uid://cx5phbjj2w7s8" path="res://scripts/rat.gd" id="1_77a1s"]
+[ext_resource type="PackedScene" uid="uid://rgwrnmsghqsx" path="res://scenes/explosion_vfx.tscn" id="2_acf8p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_77a1s"]
 atlas = ExtResource("1_1l88y")
@@ -47,6 +48,8 @@ collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_77a1s")
 
+[node name="Explosion VFX" parent="." unique_id=1738028720 instance=ExtResource("2_acf8p")]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1082587351]
 z_index = 20
 scale = Vector2(2, 2)
@@ -55,3 +58,5 @@ sprite_frames = SubResource("SpriteFrames_368s2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2056835036]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_nnna8")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
