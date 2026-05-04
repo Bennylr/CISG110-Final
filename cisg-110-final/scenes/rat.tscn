@@ -43,10 +43,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnna8"]
 size = Vector2(64, 26)
 
-[node name="Rat" type="RigidBody2D" unique_id=782129096]
+[node name="Rat" type="RigidBody2D" unique_id=782129096 node_paths=PackedStringArray("_explosion_VFX")]
 collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_77a1s")
+_explosion_VFX = NodePath("Explosion VFX")
 
 [node name="Explosion VFX" parent="." unique_id=1738028720 instance=ExtResource("2_acf8p")]
 
