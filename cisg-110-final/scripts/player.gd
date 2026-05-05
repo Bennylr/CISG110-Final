@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var _animes = get_node("AnimatedSprite2D") 
 
 @export var SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -40,8 +41,10 @@ func _physics_process(delta: float) -> void:
 		
 	if direction > 0:
 		_facingRight = true
+		_animes.flip_h = false
 	elif direction < 0:
 		_facingRight = false
+		_animes.flip_h = true
 		
 		#check if timer is running (If the kick timer > 0)
 		#subtract delta from the timer
@@ -57,8 +60,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 			_kick()
 			
+	if velocity.x == 0 && velocity.y == 0:
+		_animes.play("idle")
+	else:
+		_animes.play("walking")
+		
 	move_and_slide()
-	
 	
 func _kick() -> void:
 	if _facingRight:

@@ -30,6 +30,38 @@ region = Rect2(143, 22, 32, 32)
 atlas = ExtResource("1_o5qli")
 region = Rect2(207, 22, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
+atlas = ExtResource("1_o5qli")
+region = Rect2(15, 86, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_choun"]
+atlas = ExtResource("1_o5qli")
+region = Rect2(79, 86, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya4ey"]
+atlas = ExtResource("1_o5qli")
+region = Rect2(143, 86, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
+atlas = ExtResource("1_o5qli")
+region = Rect2(207, 86, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
+atlas = ExtResource("1_o5qli")
+region = Rect2(271, 86, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8y0u"]
+atlas = ExtResource("1_o5qli")
+region = Rect2(335, 86, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+atlas = ExtResource("1_o5qli")
+region = Rect2(399, 86, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbj1t"]
+atlas = ExtResource("1_o5qli")
+region = Rect2(463, 86, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_o6xl0"]
 animations = [{
 "frames": [{
@@ -47,6 +79,40 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"kicking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85g3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_choun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya4ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb6dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trceg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8y0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkv2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbj1t")
+}],
+"loop": true,
+"name": &"walking",
 "speed": 5.0
 }]
 
@@ -3227,7 +3293,7 @@ shape = SubResource("CapsuleShape2D_0wfyh")
 position = Vector2(1, -1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_o6xl0")
-animation = &"idle"
+animation = &"kicking"
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=531609865]
 
@@ -3295,6 +3361,18 @@ position = Vector2(454, -241)
 
 [node name="Rat6" parent="." unique_id=1152787741 instance=ExtResource("9_ya4ey")]
 position = Vector2(647, -432)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1012908679]
+
+[node name="PointsLabel" type="Label" parent="CanvasLayer" unique_id=1375520172]
+unique_name_in_owner = true
+offset_left = 29.0
+offset_top = 6.0
+offset_right = 87.0
+offset_bottom = 55.0
+text = "POINTS: 0
+
+"
 
 [connection signal="body_shape_entered" from="Player/KickLeft" to="Player" method="_on_kick_left_body_shape_entered"]
 [connection signal="body_shape_entered" from="Player/KickRight" to="Player" method="_on_kick_right_body_shape_entered"]
