@@ -60,11 +60,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 			_kick()
 			
-	if velocity.x == 0 && velocity.y == 0:
-		_animes.play("idle")
+	if _kickTimer <= 0:
+		if velocity.x == 0 && velocity.y == 0:
+			_animes.play("idle")
+		else:
+			_animes.play("walking")
 	else:
-		_animes.play("walking")
-		
+		_animes.play("kicking")
 	move_and_slide()
 	
 func _kick() -> void:

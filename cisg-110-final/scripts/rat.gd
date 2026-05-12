@@ -18,10 +18,23 @@ func _physics_process(delta: float) -> void:
 	
 func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if body.name == "Player":
+		
+		if body._kickTimer > 0:
+			print("rat got kicked")
+			if %PointsLabel:
+				var current_score = int(%PointsLabel.text)
+				%PointsLabel.text = "POINTS: " + str(current_score + 5)
+				
+		else:
+			if %PointsLabel:
+				var current_score = int(%PointsLabel.text)
+				%PointsLabel.text = "POINTS: " + str(current_score - 5)
 
 		if _explosion_VFX:
 			_explosion_VFX.global_position = global_position
 		_explosion_VFX.reparent(get_parent())
 		_explosion_VFX.emitting = true
+		
+		
 		
 		queue_free()

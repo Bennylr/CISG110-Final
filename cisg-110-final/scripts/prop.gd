@@ -12,13 +12,12 @@ func _ready() -> void:
 
 func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if _was_kicked:
+		if %PointsLabel:
+				var current_score = int (%PointsLabel.text)
+				%PointsLabel.text = "POINTS: " + str(current_score + 10)
 		print("Prop exploded")
 		_explosion_VFX.emitting = true
 		
 		_explosion_VFX.reparent(get_parent())
 		
 		queue_free()
-
-
-func _on_med_kit_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
-	pass # Replace with function body.
